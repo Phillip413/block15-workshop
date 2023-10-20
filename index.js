@@ -5,64 +5,30 @@ const userInputString = prompt(
 );
 
 
-// Split the string into an array of strings.
-const stringArray = userInputString.split(",");
 
-
-
-// console.log(stringArray);
-
-
-//creating an Object
-const flavorCount = {};
-
-
-
-const newArray = [];
-let numOfOrders = 0;
-// Use loop to iterate through the array of flavors
-for(i=0; i<stringArray.length; i++) {
-
-
-
-
-  newArray.push(stringArray[i]);
-  console.log(stringArray[i]);
-
-  let str = stringArray[i];
-  //add each flavor input in stringArray as a key in flavorCount Object
-  flavorCount.str=
-  
-
-}
-
-// console.log("Total number of orders is: " + numOfOrders);
-
-
-function countfrequency(arr, size){
+function createObject(str){
  
-  for (i=0; i<stringArray.length; i++) {
-    
-    for (x=i+1; x<stringArray.length; x++){
-      if (arr[i] == arr[x]) {
-        flavorCount[x]=true;
-        count++;
-      }
-    }
+  // Split the string into an array of strings.
+  const strArray = str.split(",");
 
+  // Object with flavors as keys and count as values
+  const orderCountObject = {};
+  for (i=0; i < strArray.length; i++) {
+    if (strArray[i] in orderCountObject){
+      orderCountObject[strArray[i]] += 1;
+      // orderCountObject.strArray[i] += 1;
+    } else {
+      orderCountObject[strArray[i]] = 1;
+      // orderCountObject.strArray[i] = 1;
+    }
   }
-  return num;
+
+  
+  return orderCountObject;
 }
 
+// call function using userInputString as the argument for function parameter
+const result = createObject(userInputString);
 
+console.table(result);
 
-
-
-// for (const key in order) {
-//   // console.log(order(key));
-// }
-
-
-// console.table(order);
-
-// console.table(stringArray);
